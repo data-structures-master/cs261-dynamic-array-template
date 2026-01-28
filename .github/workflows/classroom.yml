@@ -26,7 +26,8 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install numpy
+
+      # ---------- Individual Tests (LinkedList) ----------
 
       - name: Instantiation
         id: instantiation
@@ -34,497 +35,399 @@ jobs:
         with:
           test-name: Instantiation
           setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_instantiation
+          command: python3 -m unittest tests_autograder.tests_all.TestLinkedList.test_instantiation
           timeout: 10
           max-score: 1
 
-      - name: Default_Initial_Capacity
-        id: default_initial_capacity
+      - name: No_Initial_Value
+        id: no_initial_value
         uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Default_Initial_Capacity
+          test-name: No_Initial_Value
           setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_default_initial_capacity
+          command: python3 -m unittest tests_autograder.tests_all.TestLinkedList.test_no_initial_value
           timeout: 10
           max-score: 1
 
-      - name: Initially_Empty
-        id: initially_empty
+      - name: Initial_Value
+        id: initial_value
         uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Initially_Empty
+          test-name: Initial_Value
           setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_initially_empty
+          command: python3 -m unittest tests_autograder.tests_all.TestLinkedList.test_initial_value
           timeout: 10
           max-score: 1
 
-      - name: Initial_Length
-        id: initial_length
+      - name: Next_Points_To_Self
+        id: next_points_to_self
         uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Initial_Length
+          test-name: Next_Points_To_Self
           setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_initial_length
+          command: python3 -m unittest tests_autograder.tests_all.TestLinkedList.test_next
           timeout: 10
           max-score: 1
 
-      - name: Append_One_Value_To_Empty
-        id: append_one_value_to_empty
+      - name: Previous_Points_To_Self
+        id: previous_points_to_self
         uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Append_One_Value_To_Empty
+          test-name: Previous_Points_To_Self
           setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_append_one_value_to_empty
+          command: python3 -m unittest tests_autograder.tests_all.TestLinkedList.test_previous
           timeout: 10
           max-score: 1
 
-      - name: Append_Two_Values
-        id: append_two_values
+      - name: Sentinel_Node
+        id: sentinel_node
         uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Append_Two_Values
+          test-name: Sentinel_Node
           setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_append_two_values
+          command: python3 -m unittest tests_autograder.tests_all.TestLinkedList.test_sentinel_node
           timeout: 10
           max-score: 1
 
-      - name: Data_Property
-        id: data_property
+      - name: Not_Sentinel_Node
+        id: not_sentinel_node
         uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Data_Property
+          test-name: Not_Sentinel_Node
           setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_data_property
+          command: python3 -m unittest tests_autograder.tests_all.TestLinkedList.test_not_sentinel_node
           timeout: 10
           max-score: 1
 
-      - name: Data_Object_References
-        id: data_object_references
+      - name: Empty_List
+        id: empty_list
         uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Data_Object_References
+          test-name: Empty_List
           setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_data_object_references
+          command: python3 -m unittest tests_autograder.tests_all.TestLinkedList.test_empty
           timeout: 10
           max-score: 1
 
-      - name: Data_Capacity
-        id: data_capacity
+      - name: Not_Empty_List
+        id: not_empty_list
         uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Data_Capacity
+          test-name: Not_Empty_List
           setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_data_capacity
+          command: python3 -m unittest tests_autograder.tests_all.TestLinkedList.test_not_empty
           timeout: 10
           max-score: 1
 
-      - name: Append_First_Value_To_Internal_Data
-        id: append_first_value_to_internal_data
+      - name: Empty_Is_Last_Node
+        id: empty_is_last_node
         uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Append_First_Value_To_Internal_Data
+          test-name: Empty_Is_Last_Node
           setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_append_first_value_to_internal_data
+          command: python3 -m unittest tests_autograder.tests_all.TestLinkedList.test_empty_is_last_node
           timeout: 10
           max-score: 1
 
-      - name: Retrieve_First_Appended_Value
-        id: retrieve_first_appended_value
+      - name: Last_Of_Empty
+        id: last_of_empty
         uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Retrieve_First_Appended_Value
+          test-name: Last_Of_Empty
           setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_retrieve_first_appended_value
+          command: python3 -m unittest tests_autograder.tests_all.TestLinkedList.test_last_of_empty
           timeout: 10
           max-score: 1
 
-      - name: Next_Index
-        id: next_index
+      - name: Append_To_Empty_Sets_Next
+        id: append_to_empty_sets_next
         uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Next_Index
+          test-name: Append_To_Empty_Sets_Next
           setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_next_index
+          command: python3 -m unittest tests_autograder.tests_all.TestLinkedList.test_append_to_empty_list_sets_next_of_sentinel_to_new_node
           timeout: 10
           max-score: 1
 
-      - name: Next_Index_Append
-        id: next_index_append
+      - name: Append_To_Empty_Sets_Previous
+        id: append_to_empty_sets_previous
         uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Next_Index_Append
+          test-name: Append_To_Empty_Sets_Previous
           setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_next_index_append
+          command: python3 -m unittest tests_autograder.tests_all.TestLinkedList.test_append_to_empty_list_sets_previous_of_sentinel_to_new_node
           timeout: 10
           max-score: 1
 
-      - name: Appending_Two_Values_Internal
-        id: appending_two_values_internal
+      - name: Append_To_Empty_Sets_New_Previous_To_Sentinel
+        id: append_to_empty_sets_new_previous_to_sentinel
         uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Appending_Two_Values_Internal
+          test-name: Append_To_Empty_Sets_New_Previous_To_Sentinel
           setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_appending_two_values_internal
+          command: python3 -m unittest tests_autograder.tests_all.TestLinkedList.test_append_to_empty_list_sets_previous_of_new_node_to_sentinel
           timeout: 10
           max-score: 1
 
-      - name: Append_Two_Values_Again
-        id: append_two_values_again
+      - name: Append_To_Empty_Sets_New_Next_To_Sentinel
+        id: append_to_empty_sets_new_next_to_sentinel
         uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Append_Two_Values_Again
+          test-name: Append_To_Empty_Sets_New_Next_To_Sentinel
           setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_append_two_values_again
+          command: python3 -m unittest tests_autograder.tests_all.TestLinkedList.test_append_to_empty_list_sets_next_of_new_node_to_sentinel
           timeout: 10
           max-score: 1
 
-      - name: Append_Four_Values
-        id: append_four_values
+      - name: Two_Nodes_Not_Empty
+        id: two_nodes_not_empty
         uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Append_Four_Values
+          test-name: Two_Nodes_Not_Empty
           setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_append_four_values
+          command: python3 -m unittest tests_autograder.tests_all.TestLinkedList.test_list_with_two_nodes_is_not_empty
           timeout: 10
           max-score: 1
 
-      - name: Is_Empty
-        id: is_empty
+      - name: First_Of_Two_Not_Last
+        id: first_of_two_not_last
         uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Is_Empty
+          test-name: First_Of_Two_Not_Last
           setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_is_empty
+          command: python3 -m unittest tests_autograder.tests_all.TestLinkedList.test_first_of_two_nodes_is_not_last
           timeout: 10
           max-score: 1
 
-      - name: Clear
-        id: clear
+      - name: Second_Of_Two_Is_Last
+        id: second_of_two_is_last
         uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Clear
+          test-name: Second_Of_Two_Is_Last
           setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_clear
+          command: python3 -m unittest tests_autograder.tests_all.TestLinkedList.test_second_of_two_nodes_is_last_node
           timeout: 10
           max-score: 1
 
-      - name: Len
-        id: len
+      - name: Last_Of_Two
+        id: last_of_two
         uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Len
+          test-name: Last_Of_Two
           setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_len
+          command: python3 -m unittest tests_autograder.tests_all.TestLinkedList.test_last_of_two_nodes
           timeout: 10
           max-score: 1
 
-      - name: Negative_Index
-        id: negative_index
+      - name: Append_Third_Keeps_Sentinel_Next
+        id: append_third_keeps_sentinel_next
         uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Negative_Index
+          test-name: Append_Third_Keeps_Sentinel_Next
           setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_negative_index
+          command: python3 -m unittest tests_autograder.tests_all.TestLinkedList.test_append_to_two_node_list_next_of_sentinel_is_second
           timeout: 10
           max-score: 1
 
-      - name: Large_Index
-        id: large_index
+      - name: Append_Third_Second_Previous_Is_Sentinel
+        id: append_third_second_previous_is_sentinel
         uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Large_Index
+          test-name: Append_Third_Second_Previous_Is_Sentinel
           setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_large_index
+          command: python3 -m unittest tests_autograder.tests_all.TestLinkedList.test_append_to_two_node_list_previous_of_second_is_sentinel
           timeout: 10
           max-score: 1
 
-      - name: Pop
-        id: pop
+      - name: Append_Third_Second_Next_Is_Third
+        id: append_third_second_next_is_third
         uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Pop
+          test-name: Append_Third_Second_Next_Is_Third
           setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_pop
+          command: python3 -m unittest tests_autograder.tests_all.TestLinkedList.test_append_to_two_node_list_next_of_second_is_third
           timeout: 10
           max-score: 1
 
-      - name: Pop_Empty
-        id: pop_empty
+      - name: Append_Third_Third_Previous_Is_Second
+        id: append_third_third_previous_is_second
         uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Pop_Empty
+          test-name: Append_Third_Third_Previous_Is_Second
           setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_pop_empty
+          command: python3 -m unittest tests_autograder.tests_all.TestLinkedList.test_append_to_two_node_list_previous_of_third_is_second
           timeout: 10
           max-score: 1
 
-      - name: Delete_Last
-        id: delete_last
+      - name: Append_Third_Third_Next_Is_Sentinel
+        id: append_third_third_next_is_sentinel
         uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Delete_Last
+          test-name: Append_Third_Third_Next_Is_Sentinel
           setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_delete_last
+          command: python3 -m unittest tests_autograder.tests_all.TestLinkedList.test_append_to_two_node_list_sets_next_of_third_node_to_sentinel
           timeout: 10
           max-score: 1
 
-      - name: Delete_Invalid_Index
-        id: delete_invalid_index
+      - name: Append_Third_Sentinel_Previous_Is_Third
+        id: append_third_sentinel_previous_is_third
         uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Delete_Invalid_Index
+          test-name: Append_Third_Sentinel_Previous_Is_Third
           setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_delete_invalid_index
+          command: python3 -m unittest tests_autograder.tests_all.TestLinkedList.test_append_to_two_node_list_sets_previous_of_sentinel_to_third_node
           timeout: 10
           max-score: 1
 
-      - name: Delete_First
-        id: delete_first
+      - name: Last_Of_Three
+        id: last_of_three
         uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Delete_First
+          test-name: Last_Of_Three
           setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_delete_first
+          command: python3 -m unittest tests_autograder.tests_all.TestLinkedList.test_last_of_three_nodes
+          timeout: 10
+          max-score: 1
+
+      - name: Append_To_Three
+        id: append_to_three
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Append_To_Three
+          setup-command: ''
+          command: python3 -m unittest tests_autograder.tests_all.TestLinkedList.test_append_to_three_node_list
           timeout: 10
           max-score: 1
 
       - name: Delete_Middle
-        id: delete_middle
+        id: delete_middle_ll
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: Delete_Middle
           setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_delete_middle
+          command: python3 -m unittest tests_autograder.tests_all.TestLinkedList.test_delete
           timeout: 10
           max-score: 1
 
-      - name: Delete_Empty
-        id: delete_empty
+      - name: Insert_Between
+        id: insert_between
         uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Delete_Empty
+          test-name: Insert_Between
           setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_delete_empty
+          command: python3 -m unittest tests_autograder.tests_all.TestLinkedList.test_insert
           timeout: 10
           max-score: 1
 
-      - name: Insert_End
-        id: insert_end
+      - name: At_Position
+        id: at_position
         uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Insert_End
+          test-name: At_Position
           setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_insert_end
+          command: python3 -m unittest tests_autograder.tests_all.TestLinkedList.test_at
           timeout: 10
           max-score: 1
 
-      - name: Insert_Invalid_Index
-        id: insert_invalid_index
+      - name: Search_Not_Found
+        id: search_not_found
         uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Insert_Invalid_Index
+          test-name: Search_Not_Found
           setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_insert_invalid_index
+          command: python3 -m unittest tests_autograder.tests_all.TestLinkedList.test_search_returns_none_when_not_found
           timeout: 10
           max-score: 1
 
-      - name: Insert_First
-        id: insert_first
+      - name: Search_Found
+        id: search_found
         uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Insert_First
+          test-name: Search_Found
           setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_insert_first
+          command: python3 -m unittest tests_autograder.tests_all.TestLinkedList.test_search_returns_node_when_found
           timeout: 10
           max-score: 1
 
-      - name: Insert_Middle
-        id: insert_middle
+      - name: Insert_In_Order_Empty
+        id: insert_in_order_empty
         uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Insert_Middle
+          test-name: Insert_In_Order_Empty
           setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_insert_middle
+          command: python3 -m unittest tests_autograder.tests_all.TestLinkedList.test_insert_in_order_when_empty
           timeout: 10
           max-score: 1
 
-      - name: Insert_Empty
-        id: insert_empty
+      - name: Insert_In_Order_Less_Than
+        id: insert_in_order_less_than
         uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Insert_Empty
+          test-name: Insert_In_Order_Less_Than
           setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_insert_empty
+          command: python3 -m unittest tests_autograder.tests_all.TestLinkedList.test_insert_in_order_less_than
           timeout: 10
           max-score: 1
 
-      - name: Empty_Not_Full
-        id: empty_not_full
+      - name: Insert_In_Order_Greater_Than
+        id: insert_in_order_greater_than
         uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Empty_Not_Full
+          test-name: Insert_In_Order_Greater_Than
           setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_empty_not_full
+          command: python3 -m unittest tests_autograder.tests_all.TestLinkedList.test_insert_in_order_greater_than
           timeout: 10
           max-score: 1
 
-      - name: Less_Than_Capacity
-        id: less_than_capacity
+      - name: Insert_In_Order_Maintains_Order
+        id: insert_in_order_maintains_order
         uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Less_Than_Capacity
+          test-name: Insert_In_Order_Maintains_Order
           setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_less_than_capacity
+          command: python3 -m unittest tests_autograder.tests_all.TestLinkedList.test_insert_in_order_maintains_order_of_values
           timeout: 10
           max-score: 1
 
-      - name: Full
-        id: full
-        uses: classroom-resources/autograding-command-grader@v1
-        with:
-          test-name: Full
-          setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_full
-          timeout: 30
-          max-score: 1
-
-      - name: Append_To_Full
-        id: append_to_full
-        uses: classroom-resources/autograding-command-grader@v1
-        with:
-          test-name: Append_To_Full
-          setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_append_to_full
-          timeout: 30
-          max-score: 1
-
-      - name: New_Capacity
-        id: new_capacity
-        uses: classroom-resources/autograding-command-grader@v1
-        with:
-          test-name: New_Capacity
-          setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_new_capacity
-          timeout: 30
-          max-score: 1
-
-      - name: Insert_To_Full
-        id: insert_to_full
-        uses: classroom-resources/autograding-command-grader@v1
-        with:
-          test-name: Insert_To_Full
-          setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_insert_to_full
-          timeout: 30
-          max-score: 1
-
-      - name: Max
-        id: max
-        uses: classroom-resources/autograding-command-grader@v1
-        with:
-          test-name: Max
-          setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_max
-          timeout: 30
-          max-score: 1
-
-      - name: Min
-        id: min
-        uses: classroom-resources/autograding-command-grader@v1
-        with:
-          test-name: Min
-          setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_min
-          timeout: 30
-          max-score: 1
-
-      - name: Sum
-        id: sum
-        uses: classroom-resources/autograding-command-grader@v1
-        with:
-          test-name: Sum
-          setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_sum
-          timeout: 30
-          max-score: 1
-
-      - name: Max_Min_Sum_Of_Empty
-        id: max_min_sum_of_empty
-        uses: classroom-resources/autograding-command-grader@v1
-        with:
-          test-name: Max_Min_Sum_Of_Empty
-          setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_max_min_sum_of_empty
-          timeout: 30
-          max-score: 1
-
-      - name: Linear_Search
-        id: linear_search
-        uses: classroom-resources/autograding-command-grader@v1
-        with:
-          test-name: Linear_Search
-          setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_linear_search
-          timeout: 180
-          max-score: 1
-
-      - name: Binary_Search
-        id: binary_search
-        uses: classroom-resources/autograding-command-grader@v1
-        with:
-          test-name: Binary_Search
-          setup-command: ''
-          command: python3 -m unittest tests_autograder.tests_all.TestDynamicArray.test_binary_search
-          timeout: 180
-          max-score: 1
-
+      # ---------- Reporter ----------
       - name: Autograding Reporter
         uses: classroom-resources/autograding-grading-reporter@v1
         env:
           INSTANTIATION_RESULTS: "${{ steps.instantiation.outputs.result }}"
-          DEFAULT_INITIAL_CAPACITY_RESULTS: "${{ steps.default_initial_capacity.outputs.result }}"
-          INITIALLY_EMPTY_RESULTS: "${{ steps.initially_empty.outputs.result }}"
-          INITIAL_LENGTH_RESULTS: "${{ steps.initial_length.outputs.result }}"
-          APPEND_ONE_VALUE_TO_EMPTY_RESULTS: "${{ steps.append_one_value_to_empty.outputs.result }}"
-          APPEND_TWO_VALUES_RESULTS: "${{ steps.append_two_values.outputs.result }}"
-          DATA_PROPERTY_RESULTS: "${{ steps.data_property.outputs.result }}"
-          DATA_OBJECT_REFERENCES_RESULTS: "${{ steps.data_object_references.outputs.result }}"
-          DATA_CAPACITY_RESULTS: "${{ steps.data_capacity.outputs.result }}"
-          APPEND_FIRST_VALUE_TO_INTERNAL_DATA_RESULTS: "${{ steps.append_first_value_to_internal_data.outputs.result }}"
-          RETRIEVE_FIRST_APPENDED_VALUE_RESULTS: "${{ steps.retrieve_first_appended_value.outputs.result }}"
-          NEXT_INDEX_RESULTS: "${{ steps.next_index.outputs.result }}"
-          NEXT_INDEX_APPEND_RESULTS: "${{ steps.next_index_append.outputs.result }}"
-          APPENDING_TWO_VALUES_INTERNAL_RESULTS: "${{ steps.appending_two_values_internal.outputs.result }}"
-          APPEND_TWO_VALUES_AGAIN_RESULTS: "${{ steps.append_two_values_again.outputs.result }}"
-          APPEND_FOUR_VALUES_RESULTS: "${{ steps.append_four_values.outputs.result }}"
-          IS_EMPTY_RESULTS: "${{ steps.is_empty.outputs.result }}"
-          CLEAR_RESULTS: "${{ steps.clear.outputs.result }}"
-          LEN_RESULTS: "${{ steps.len.outputs.result }}"
-          NEGATIVE_INDEX_RESULTS: "${{ steps.negative_index.outputs.result }}"
-          LARGE_INDEX_RESULTS: "${{ steps.large_index.outputs.result }}"
-          POP_RESULTS: "${{ steps.pop.outputs.result }}"
-          POP_EMPTY_RESULTS: "${{ steps.pop_empty.outputs.result }}"
-          DELETE_LAST_RESULTS: "${{ steps.delete_last.outputs.result }}"
-          DELETE_INVALID_INDEX_RESULTS: "${{ steps.delete_invalid_index.outputs.result }}"
-          DELETE_FIRST_RESULTS: "${{ steps.delete_first.outputs.result }}"
-          DELETE_MIDDLE_RESULTS: "${{ steps.delete_middle.outputs.result }}"
-          DELETE_EMPTY_RESULTS: "${{ steps.delete_empty.outputs.result }}"
-          INSERT_END_RESULTS: "${{ steps.insert_end.outputs.result }}"
-          INSERT_INVALID_INDEX_RESULTS: "${{ steps.insert_invalid_index.outputs.result }}"
-          INSERT_FIRST_RESULTS: "${{ steps.insert_first.outputs.result }}"
-          INSERT_MIDDLE_RESULTS: "${{ steps.insert_middle.outputs.result }}"
-          INSERT_EMPTY_RESULTS: "${{ steps.insert_empty.outputs.result }}"
-          EMPTY_NOT_FULL_RESULTS: "${{ steps.empty_not_full.outputs.result }}"
-          LESS_THAN_CAPACITY_RESULTS: "${{ steps.less_than_capacity.outputs.result }}"
-          FULL_RESULTS: "${{ steps.full.outputs.result }}"
-          APPEND_TO_FULL_RESULTS: "${{ steps.append_to_full.outputs.result }}"
-          NEW_CAPACITY_RESULTS: "${{ steps.new_capacity.outputs.result }}"
-          INSERT_TO_FULL_RESULTS: "${{ steps.insert_to_full.outputs.result }}"
-          MAX_RESULTS: "${{ steps.max.outputs.result }}"
-          MIN_RESULTS: "${{ steps.min.outputs.result }}"
-          SUM_RESULTS: "${{ steps.sum.outputs.result }}"
-          MAX_MIN_SUM_OF_EMPTY_RESULTS: "${{ steps.max_min_sum_of_empty.outputs.result }}"
-          LINEAR_SEARCH_RESULTS: "${{ steps.linear_search.outputs.result }}"
-          BINARY_SEARCH_RESULTS: "${{ steps.binary_search.outputs.result }}"
+          NO_INITIAL_VALUE_RESULTS: "${{ steps.no_initial_value.outputs.result }}"
+          INITIAL_VALUE_RESULTS: "${{ steps.initial_value.outputs.result }}"
+          NEXT_POINTS_TO_SELF_RESULTS: "${{ steps.next_points_to_self.outputs.result }}"
+          PREVIOUS_POINTS_TO_SELF_RESULTS: "${{ steps.previous_points_to_self.outputs.result }}"
+          SENTINEL_NODE_RESULTS: "${{ steps.sentinel_node.outputs.result }}"
+          NOT_SENTINEL_NODE_RESULTS: "${{ steps.not_sentinel_node.outputs.result }}"
+          EMPTY_LIST_RESULTS: "${{ steps.empty_list.outputs.result }}"
+          NOT_EMPTY_LIST_RESULTS: "${{ steps.not_empty_list.outputs.result }}"
+          EMPTY_IS_LAST_NODE_RESULTS: "${{ steps.empty_is_last_node.outputs.result }}"
+          LAST_OF_EMPTY_RESULTS: "${{ steps.last_of_empty.outputs.result }}"
+          APPEND_TO_EMPTY_SETS_NEXT_RESULTS: "${{ steps.append_to_empty_sets_next.outputs.result }}"
+          APPEND_TO_EMPTY_SETS_PREVIOUS_RESULTS: "${{ steps.append_to_empty_sets_previous.outputs.result }}"
+          APPEND_TO_EMPTY_SETS_NEW_PREVIOUS_TO_SENTINEL_RESULTS: "${{ steps.append_to_empty_sets_new_previous_to_sentinel.outputs.result }}"
+          APPEND_TO_EMPTY_SETS_NEW_NEXT_TO_SENTINEL_RESULTS: "${{ steps.append_to_empty_sets_new_next_to_sentinel.outputs.result }}"
+          TWO_NODES_NOT_EMPTY_RESULTS: "${{ steps.two_nodes_not_empty.outputs.result }}"
+          FIRST_OF_TWO_NOT_LAST_RESULTS: "${{ steps.first_of_two_not_last.outputs.result }}"
+          SECOND_OF_TWO_IS_LAST_RESULTS: "${{ steps.second_of_two_is_last.outputs.result }}"
+          LAST_OF_TWO_RESULTS: "${{ steps.last_of_two.outputs.result }}"
+          APPEND_THIRD_KEEPS_SENTINEL_NEXT_RESULTS: "${{ steps.append_third_keeps_sentinel_next.outputs.result }}"
+          APPEND_THIRD_SECOND_PREVIOUS_IS_SENTINEL_RESULTS: "${{ steps.append_third_second_previous_is_sentinel.outputs.result }}"
+          APPEND_THIRD_SECOND_NEXT_IS_THIRD_RESULTS: "${{ steps.append_third_second_next_is_third.outputs.result }}"
+          APPEND_THIRD_THIRD_PREVIOUS_IS_SECOND_RESULTS: "${{ steps.append_third_third_previous_is_second.outputs.result }}"
+          APPEND_THIRD_THIRD_NEXT_IS_SENTINEL_RESULTS: "${{ steps.append_third_third_next_is_sentinel.outputs.result }}"
+          APPEND_THIRD_SENTINEL_PREVIOUS_IS_THIRD_RESULTS: "${{ steps.append_third_sentinel_previous_is_third.outputs.result }}"
+          LAST_OF_THREE_RESULTS: "${{ steps.last_of_three.outputs.result }}"
+          APPEND_TO_THREE_RESULTS: "${{ steps.append_to_three.outputs.result }}"
+          DELETE_MIDDLE_LL_RESULTS: "${{ steps.delete_middle_ll.outputs.result }}"
+          INSERT_BETWEEN_RESULTS: "${{ steps.insert_between.outputs.result }}"
+          AT_POSITION_RESULTS: "${{ steps.at_position.outputs.result }}"
+          SEARCH_NOT_FOUND_RESULTS: "${{ steps.search_not_found.outputs.result }}"
+          SEARCH_FOUND_RESULTS: "${{ steps.search_found.outputs.result }}"
+          INSERT_IN_ORDER_EMPTY_RESULTS: "${{ steps.insert_in_order_empty.outputs.result }}"
+          INSERT_IN_ORDER_LESS_THAN_RESULTS: "${{ steps.insert_in_order_less_than.outputs.result }}"
+          INSERT_IN_ORDER_GREATER_THAN_RESULTS: "${{ steps.insert_in_order_greater_than.outputs.result }}"
+          INSERT_IN_ORDER_MAINTAINS_ORDER_RESULTS: "${{ steps.insert_in_order_maintains_order.outputs.result }}"
         with:
-          runners: instantiation,default_initial_capacity,initially_empty,initial_length,append_one_value_to_empty,append_two_values,data_property,data_object_references,data_capacity,append_first_value_to_internal_data,retrieve_first_appended_value,next_index,next_index_append,appending_two_values_internal,append_two_values_again,append_four_values,is_empty,clear,len,negative_index,large_index,pop,pop_empty,delete_last,delete_invalid_index,delete_first,delete_middle,delete_empty,insert_end,insert_invalid_index,insert_first,insert_middle,insert_empty,empty_not_full,less_than_capacity,full,append_to_full,new_capacity,insert_to_full,max,min,sum,max_min_sum_of_empty,linear_search,binary_search
+          runners: instantiation,no_initial_value,initial_value,next_points_to_self,previous_points_to_self,sentinel_node,not_sentinel_node,empty_list,not_empty_list,empty_is_last_node,last_of_empty,append_to_empty_sets_next,append_to_empty_sets_previous,append_to_empty_sets_new_previous_to_sentinel,append_to_empty_sets_new_next_to_sentinel,two_nodes_not_empty,first_of_two_not_last,second_of_two_is_last,last_of_two,append_third_keeps_sentinel_next,append_third_second_previous_is_sentinel,append_third_second_next_is_third,append_third_third_previous_is_second,append_third_third_next_is_sentinel,append_third_sentinel_previous_is_third,last_of_three,append_to_three,delete_middle_ll,insert_between,at_position,search_not_found,search_found,insert_in_order_empty,insert_in_order_less_than,insert_in_order_greater_than,insert_in_order_maintains_order
